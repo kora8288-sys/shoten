@@ -1,0 +1,145 @@
+/* ============================================================
+   SHOP — product page for shutter kif. / MENTALITI
+   Additive only: never overrides style.css, only styles the new
+   .shop block + the two small nav links (.shopEnter / .backHome)
+   using the SAME tokens style.css already defines (--dark/--light/
+   --on-dark/--paper/--ease/--f/--f-vcr/--gutter). Load this file
+   AFTER css/style.css, on BOTH index.html and shop.html.
+   ============================================================ */
+
+/* ---- "Start Shopping" link — lives on index.html only ---- */
+.shopEnter{
+  position:fixed;left:var(--gutter);top:calc(var(--gutter) - .3rem);z-index:95;
+  font-family:var(--f);font-size:clamp(.72rem,1vw,.86rem);color:#fff;
+  mix-blend-mode:difference;line-height:1.35;opacity:0;
+  transition:opacity .8s var(--ease) .2s;
+}
+.is-lit .shopEnter{opacity:1}
+.shopEnter::after{
+  content:'';position:absolute;left:0;right:100%;bottom:.1rem;height:1px;
+  background:currentColor;transition:right .35s var(--ease);
+}
+.shopEnter:hover::after{right:0}
+
+/* ---- "back to site" link — lives on shop.html only ---- */
+.backHome{
+  position:fixed;left:var(--gutter);top:calc(var(--gutter) - .3rem);z-index:95;
+  font-family:var(--f);font-size:clamp(.72rem,1vw,.86rem);color:#fff;
+  mix-blend-mode:difference;line-height:1.35;
+}
+.backHome::after{
+  content:'';position:absolute;left:0;right:100%;bottom:.1rem;height:1px;
+  background:currentColor;transition:right .35s var(--ease);
+}
+.backHome:hover::after{right:0}
+
+/* ---- "Account" link — lives on index.html AND shop.html ---- */
+.accountLink{
+  position:fixed;right:var(--gutter);top:calc(var(--gutter) - .3rem);z-index:95;
+  font-family:var(--f);font-size:clamp(.72rem,1vw,.86rem);color:#fff;
+  mix-blend-mode:difference;line-height:1.35;opacity:0;
+  transition:opacity .8s var(--ease) .2s;
+}
+.is-lit .accountLink{opacity:1}
+.accountLink::after{
+  content:'';position:absolute;left:0;right:100%;bottom:.1rem;height:1px;
+  background:currentColor;transition:right .35s var(--ease);
+}
+.accountLink:hover::after{right:0}
+
+.shop{padding:0}
+.shop .stage{display:none} /* the shop doesn't use the PSD-comp stage system the other sections use */
+
+/* ---- hero banner : the "big image" from the reference video ---- */
+.shop__hero{
+  position:relative;height:92svh;min-height:560px;
+  display:flex;align-items:flex-end;overflow:hidden;
+}
+.shop__hero-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;object-position:50% 24%;
+  filter:grayscale(.15) contrast(1.08);
+  transform:scale(1.02);
+}
+.shop__hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.12) 0%,rgba(0,0,0,.18) 40%,rgba(0,0,0,.94) 100%);
+}
+.shop__hero-content{position:relative;z-index:2;padding:0 var(--gutter) clamp(2.4rem,7svh,4.4rem);width:100%}
+.shop__kicker{
+  font-family:var(--f-vcr);font-size:.78rem;letter-spacing:.24em;
+  margin:0 0 .6rem;text-transform:uppercase;color:#fff;opacity:.72;
+}
+.shop__title{
+  font-family:var(--f-vcr);margin:0;line-height:.92;color:#fff;
+  font-size:clamp(2.8rem,9vw,6.6rem);letter-spacing:-.01em;
+}
+.shop__sub{
+  font-family:var(--f);margin:.8rem 0 1.7rem;max-width:32em;color:#fff;opacity:.8;
+  font-size:clamp(.92rem,1.4vw,1.08rem);
+}
+.shop__cta{
+  display:inline-flex;align-items:center;gap:.65rem;
+  border:1px solid #fff;color:#fff;background:transparent;
+  padding:.85rem 1.6rem;font-family:var(--f);font-size:.86rem;letter-spacing:.03em;
+  transition:background .35s var(--ease),color .35s var(--ease);
+}
+.shop__cta:hover{background:#fff;color:#000}
+.shop__cta svg{width:13px;height:13px;transition:transform .4s var(--ease)}
+.shop__cta:hover svg{transform:translateY(3px)}
+.shop__hero .cue{bottom:1.4rem;color:#fff}
+
+/* ---- grid ---- */
+.shop__grid-wrap{background:var(--paper);padding:clamp(3.2rem,7svh,5.5rem) var(--gutter) clamp(4.4rem,10svh,7.5rem)}
+.shop__head{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  margin:0 0 clamp(1.7rem,4svh,2.8rem);flex-wrap:wrap;
+}
+.shop__head h3{font-family:var(--f-vcr);font-size:clamp(1.3rem,2.3vw,1.7rem);margin:0;font-weight:400;letter-spacing:.01em}
+.shop__count{font-family:var(--f-vcr);font-size:.82rem;opacity:.42;font-variant-numeric:tabular-nums}
+
+.shop__grid{display:grid;gap:clamp(1.15rem,2.4vw,1.9rem);grid-template-columns:repeat(2,1fr)}
+@media (min-width:640px){.shop__grid{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:1080px){.shop__grid{grid-template-columns:repeat(4,1fr)}}
+
+/* ---- product card ----
+   Every card behaves the same way: img1 shows normally, img2 fades
+   in on hover (or tap, on touch) with a small zoom. Simple, uniform,
+   no per-product flags — see js/shop-data.js.                      */
+.product{position:relative}
+.product__media{
+  position:relative;display:block;aspect-ratio:4/5;overflow:hidden;cursor:pointer;
+  background:rgba(128,128,128,.14);perspective:900px;
+  transition:transform .5s var(--ease);will-change:transform;
+}
+.product__img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:opacity .55s var(--ease),transform .8s var(--ease);
+}
+.product__img--1{opacity:1;transform:scale(1)}
+.product__img--2{opacity:0;transform:scale(1.045)}
+.product:hover .product__img--1,
+.product.is-flipped .product__img--1{opacity:0}
+.product:hover .product__img--2,
+.product.is-flipped .product__img--2{opacity:1}
+
+.product__hint{
+  position:absolute;right:.65rem;bottom:.65rem;z-index:2;pointer-events:none;
+  font-family:var(--f-vcr);font-size:.58rem;letter-spacing:.07em;text-transform:uppercase;
+  color:#fff;background:rgba(0,0,0,.55);padding:.28rem .42rem;
+}
+
+.product__meta{display:flex;align-items:baseline;justify-content:space-between;gap:.6rem;padding-top:.7rem}
+.product__name{
+  font-family:var(--f);font-size:clamp(.78rem,1.05vw,.9rem);margin:0;font-weight:400;
+  line-height:1.25;
+}
+.product__price{font-family:var(--f-vcr);font-size:.84rem;opacity:.6;white-space:nowrap;padding-left:.6rem}
+
+.product{opacity:0;transform:translateY(14px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.product.is-shown{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  .product__media{transition:none}
+  .product__img{transition:opacity .25s linear;transform:none !important}
+}

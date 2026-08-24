@@ -1,0 +1,38 @@
+/* ============================================================
+   ACCOUNT — sign in / sign up / order history for shutter kif.
+   Uses the SAME tokens style.css already defines (--dark/--light/
+   --on-dark/--paper/--ease/--f/--f-vcr/--gutter). Load this file
+   AFTER css/style.css (and after css/shop.css, for .backHome).
+   ============================================================ */
+.acct{min-height:100svh;display:flex;align-items:center;justify-content:center;padding:6rem var(--gutter) 4rem}
+.acct__wrap{width:100%;max-width:420px}
+.acct__muted{font-family:var(--f);opacity:.55;text-align:center}
+.acct__h{font-family:var(--f-vcr);font-size:1.8rem;margin:0 0 1.2rem;font-weight:400}
+.acct__h--sm{font-size:1.2rem;margin-top:2.4rem}
+
+.acct__form{display:flex;flex-direction:column;gap:.7rem}
+.acct__form input{
+  background:transparent;border:1px solid rgba(255,255,255,.25);color:var(--on-dark);
+  font-family:var(--f);font-size:.92rem;padding:.8rem 1rem;
+}
+body.is-invert .acct__form input{border-color:rgba(0,0,0,.25)}
+.acct__form input:focus{outline:none;border-color:currentColor}
+
+.acct__btn{
+  border:1px solid currentColor;background:transparent;color:var(--on-dark);
+  font-family:var(--f);font-size:.88rem;padding:.85rem 1.2rem;cursor:pointer;
+  transition:background .3s var(--ease),color .3s var(--ease);
+}
+.acct__btn:hover{background:var(--on-dark);color:var(--dark)}
+.acct__btn--ghost{opacity:.7}
+
+.acct__err{font-family:var(--f);font-size:.82rem;color:#ff6b6b;min-height:1.2em;margin:.3rem 0 0}
+.acct__ok{font-family:var(--f);font-size:.82rem;color:#7fe89a;min-height:1.2em;margin:.3rem 0 0}
+.acct__switch{font-family:var(--f);font-size:.85rem;opacity:.6;margin-top:1rem}
+.acct__switch a{text-decoration:underline}
+
+.acct__order{border:1px solid rgba(255,255,255,.14);padding:.9rem 1rem;margin-bottom:.7rem}
+body.is-invert .acct__order{border-color:rgba(0,0,0,.14)}
+.acct__order-head{display:flex;justify-content:space-between;font-family:var(--f-vcr);font-size:.85rem;opacity:.7}
+.acct__order-items{font-family:var(--f);font-size:.85rem;margin:.4rem 0;opacity:.85}
+.acct__order-total{font-family:var(--f-vcr);font-size:.95rem;margin:0}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Shop — MENTALITI / shutter kif.</title>
+<meta name="description" content="MENTALITI — new arrivals." />
+<meta name="theme-color" content="#000000" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fff'/%3E%3Ctext x='16' y='23' font-family='Helvetica,Arial' font-size='20' font-style='italic' text-anchor='middle' fill='%23000'%3Ek%3C/text%3E%3C/svg%3E" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/shop.css" />
+</head>
+<body class="is-lit">
+<div class="ctl">
+<button class="ctl__b" id="invertToggle" aria-pressed="false">invert</button>
+<button class="ctl__b" id="soundToggle" aria-pressed="false">music on/off</button>
+</div>
+<a class="backHome" href="index.html">← shutter kif.</a>
+<a class="accountLink" href="account.html">Account</a>
+<main>
+<section class="sec sec--dark shop" id="shop">
+<div class="shop__hero">
+<img class="shop__hero-img" src="assets/shop/hero-bat.jpg" alt="" />
+<div class="shop__hero-content">
+<p class="shop__kicker">New arrivals</p>
+<h2 class="shop__title">MENTALITI</h2>
+<p class="shop__sub">Dark pieces, made with intention.</p>
+<a class="shop__cta" href="#shop-grid">
+Shop the drop
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v16M5 13l7 7 7-7"/></svg>
+</a>
+</div>
+<a class="cue" href="#shop-grid" aria-label="Scroll to products"><i></i></a>
+</div>
+<div class="shop__grid-wrap" id="shop-grid">
+<div class="shop__head">
+<h3>All pieces</h3>
+<span class="shop__count" id="shopCount">00</span>
+</div>
+<div class="shop__grid" id="shopGrid"></div>
+</div>
+</section>
+</main>
+<!-- preload=auto, not none: rolled in muted from the first frame so it's
+buffered and ready to unmute the instant the visitor interacts -->
+<audio id="bgAudio" src="assets/audio/theme.mp3" loop preload="auto" playsinline></audio>
+<script src="js/shop-data.js"></script>
+<script src="js/shop.js"></script>
+<script src="js/shop-page.js"></script>
+</body>
+</html>
