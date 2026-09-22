@@ -1,5 +1,5 @@
 /* ============================================================
-   SHOP — product page for shutter kif. / MENTALITI
+   SHOP — product page for shutter kif . / MENTALITI
    Additive only: never overrides style.css, only styles the new
    .shop block + the two small nav links (.shopEnter / .backHome)
    using the SAME tokens style.css already defines (--dark/--light/
@@ -32,8 +32,6 @@
   background:currentColor;transition:right .35s var(--ease);
 }
 .backHome:hover::after{right:0}
-
-/* ---- "Account" link — lives on index.html AND shop.html ---- */
 .accountLink{
   position:fixed;right:var(--gutter);top:calc(var(--gutter) - .3rem);z-index:95;
   font-family:var(--f);font-size:clamp(.72rem,1vw,.86rem);color:#fff;
@@ -101,6 +99,7 @@
 .shop__grid{display:grid;gap:clamp(1.15rem,2.4vw,1.9rem);grid-template-columns:repeat(2,1fr)}
 @media (min-width:640px){.shop__grid{grid-template-columns:repeat(3,1fr)}}
 @media (min-width:1080px){.shop__grid{grid-template-columns:repeat(4,1fr)}}
+.shop__loading{grid-column:1 / -1;font-family:var(--f);opacity:.5;text-align:center;padding:2rem 0}
 
 /* ---- product card ----
    Every card behaves the same way: img1 shows normally, img2 fades

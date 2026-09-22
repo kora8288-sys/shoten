@@ -22,6 +22,10 @@
   var showSignUp = document.getElementById('showSignUp');
   var showSignIn = document.getElementById('showSignIn');
 
+  /* where the confirmation-email link should land, as a backup to
+     whatever Site URL is set in the Supabase dashboard */
+  var EMAIL_REDIRECT = 'https://shutterkif-oss.github.io/account.html';
+
   /* Supabase doesn't localise its error messages — map the common
      ones so the page reads in Arabic; anything unmapped just shows
      as-is rather than being hidden. */
@@ -102,7 +106,11 @@
       signUpError.textContent = 'كلمة السر لازم تكون 6 أحرف على الأقل';
       return;
     }
-    window.sb.auth.signUp({ email: email, password: password }).then(function (res) {
+    window.sb.auth.signUp({
+      email: email,
+      password: password,
+      options: { emailRedirectTo: EMAIL_REDIRECT }
+    }).then(function (res) {
       if (res.error) {
         signUpError.textContent = arabicError(res.error.message);
         return;
